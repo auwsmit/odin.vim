@@ -72,7 +72,7 @@ syntax keyword odinDefer defer
 syntax region odinRawString start=+`+ end=+`+
 syntax region odinChar start=+'+ skip=+\\\\\|\\'+ end=+'+
 syntax region odinString start=+"+ skip=+\\\\\|\\'+ end=+"+ contains=odinEscape
-syntax match odinEscape display contained /\\\([nrt\\'"]\|x\x\{2}\)/
+syntax match odinEscape display contained /\\\([abefnrtv\\'"]\|x\x\{2}\)/
 
 syntax match odinFunctionDecl "\v<\w*>(\s*::\s*(#.*\s*)?proc)@="
 syntax match odinFunctionCall "\v\w+\s*(\()@="
@@ -85,10 +85,13 @@ syntax match odinHalfRange "\.\.\<" display
 syntax match odinTernaryQMark "?" display
 syntax match odinDeclaration "\:\:\?" display
 syntax match odinDeclAssign ":=" display
+syntax match odinAssign "=" display
 syntax match odinReturnOp "->" display
 
 syntax match odinInteger "\-\?\<\d\+\>" display
-syntax match odinFloat "\-\?\<[0-9][0-9_]*\%(\.[0-9][0-9_]*\)\%([eE][+-]\=[0-9_]\+\)\=" display
+syntax match odinFloat "\<[0-9][0-9_]*\%(\.[0-9_]*\)\=\%([eE][+-]\=[0-9][0-9_]*\)\=[i]\=" display
+syntax match odinFloat "\.[0-9][0-9_]*\%([eE][+-]\=[0-9][0-9_]*\)\=[i]\=" display
+
 syntax match odinHex "\<0[xX][0-9A-Fa-f]\+\>" display
 syntax match odinDoz "\<0[zZ][0-9a-bA-B]\+\>" display
 syntax match odinOct "\<0[oO][0-7]\+\>" display
@@ -96,6 +99,9 @@ syntax match odinBin "\<0[bB][01]\+\>" display
 
 syntax match odinAddressOf "&" display
 syntax match odinDeref "\^" display
+syntax match odinMaths "+\|-\|\/\|\*\|%" display
+syntax match odinCompares "<\|>\||\|!" display
+syntax match odinMiscSymbols ",\|\.\%([0-9]\)\@!\|\[\|\]" display
 
 syntax match odinMacro "#\<\w\+\>" display
 
@@ -152,6 +158,9 @@ highlight link odinHalfRange Operator
 highlight link odinAssign Operator
 highlight link odinAddressOf Operator
 highlight link odinDeref Operator
+highlight link odinMaths Operator
+highlight link odinCompares Operator
+highlight link odinMiscSymbols Operator
 
 highlight link odinDeclaration Operator
 highlight link odinDeclAssign Operator
