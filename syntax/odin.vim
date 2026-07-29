@@ -84,7 +84,7 @@ syntax match odinCompileTime "$\<\w\+\>" display
 
 " NOTE: Optional, disabled by default to reduce noise.
 "       Highlight all-caps identifiers as Constant, e.g. FOO_BAR
-" syntax match odinConstVar "[A-Z][A-Z0-9_]\+" display
+" syntax match odinConstLabel "[A-Z][A-Z0-9_]\+" display
 " }}}
 
 " Strings {{{
@@ -190,7 +190,7 @@ highlight def link odinCompileTime Constant
 
 highlight def link odinUserConst Constant
 
-highlight def link odinConstVar Constant
+highlight def link odinConstLabel Constant
 " }}}
 
 " Strings {{{
