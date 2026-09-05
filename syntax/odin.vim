@@ -89,6 +89,8 @@ syntax match odinCompileTime "$\<\w\+\>" display
 
 " Strings {{{
 syntax region odinRawString start=+`+ end=+`+
+syntax region odinRawString start=+```+ end=+```+
+syntax region odinRawString start=+"""+ end=+"""+
 syntax region odinChar start=+'+ skip=+\\\\\|\\'+ end=+'+
 syntax region odinString start=+"+ skip=+\\\\\|\\'+ end=+"+ keepend contains=odinEscape, odinFmtSpec
 syntax match odinEscape display contained "\\\([abefnrtv\\'"]\|x\x\{2}\|u\x\{4}\|U\x\{8}\|[0-7]\{3}\)"
